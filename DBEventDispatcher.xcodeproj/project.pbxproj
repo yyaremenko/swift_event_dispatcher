@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B7702D91C98A25A0098435C /* DBEventDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7702D81C98A25A0098435C /* DBEventDispatcherTests.swift */; };
+		1B7702E61C98A2BF0098435C /* DBEventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7702E31C98A2BF0098435C /* DBEventProtocols.swift */; settings = {ASSET_TAGS = (); }; };
+		1B7702E71C98A2BF0098435C /* DBEventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7702E41C98A2BF0098435C /* DBEventSubscription.swift */; settings = {ASSET_TAGS = (); }; };
+		1B7702E81C98A2BF0098435C /* DBEventDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7702E51C98A2BF0098435C /* DBEventDispatcher.swift */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B7702D41C98A25A0098435C /* DBEventDispatcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DBEventDispatcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B7702D81C98A25A0098435C /* DBEventDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEventDispatcherTests.swift; sourceTree = "<group>"; };
+		1B7702DA1C98A25A0098435C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B7702E31C98A2BF0098435C /* DBEventProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEventProtocols.swift; sourceTree = "<group>"; };
+		1B7702E41C98A2BF0098435C /* DBEventSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEventSubscription.swift; sourceTree = "<group>"; };
+		1B7702E51C98A2BF0098435C /* DBEventDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEventDispatcher.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B7702D11C98A25A0098435C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B7702B71C98A25A0098435C = {
+			isa = PBXGroup;
+			children = (
+				1B7702C21C98A25A0098435C /* DBEventDispatcher */,
+				1B7702D71C98A25A0098435C /* DBEventDispatcherTests */,
+				1B7702C11C98A25A0098435C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B7702C11C98A25A0098435C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B7702D41C98A25A0098435C /* DBEventDispatcherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B7702C21C98A25A0098435C /* DBEventDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				1B7702E31C98A2BF0098435C /* DBEventProtocols.swift */,
+				1B7702E41C98A2BF0098435C /* DBEventSubscription.swift */,
+				1B7702E51C98A2BF0098435C /* DBEventDispatcher.swift */,
+			);
+			path = DBEventDispatcher;
+			sourceTree = "<group>";
+		};
+		1B7702D71C98A25A0098435C /* DBEventDispatcherTests */ = {
+			isa = PBXGroup;
+			children = (
+				1B7702D81C98A25A0098435C /* DBEventDispatcherTests.swift */,
+				1B7702DA1C98A25A0098435C /* Info.plist */,
+			);
+			path = DBEventDispatcherTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B7702D31C98A25A0098435C /* DBEventDispatcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B7702E01C98A25A0098435C /* Build configuration list for PBXNativeTarget "DBEventDispatcherTests" */;
+			buildPhases = (
+				1B7702D01C98A25A0098435C /* Sources */,
+				1B7702D11C98A25A0098435C /* Frameworks */,
+				1B7702D21C98A25A0098435C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBEventDispatcherTests;
+			productName = DBEventDispatcherTests;
+			productReference = 1B7702D41C98A25A0098435C /* DBEventDispatcherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B7702B81C98A25A0098435C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = DigitBrains;
+				TargetAttributes = {
+					1B7702D31C98A25A0098435C = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 1B7702BF1C98A25A0098435C;
+					};
+				};
+			};
+			buildConfigurationList = 1B7702BB1C98A25A0098435C /* Build configuration list for PBXProject "DBEventDispatcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B7702B71C98A25A0098435C;
+			productRefGroup = 1B7702C11C98A25A0098435C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B7702D31C98A25A0098435C /* DBEventDispatcherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B7702D21C98A25A0098435C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B7702D01C98A25A0098435C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7702E71C98A2BF0098435C /* DBEventSubscription.swift in Sources */,
+				1B7702E81C98A2BF0098435C /* DBEventDispatcher.swift in Sources */,
+				1B7702E61C98A2BF0098435C /* DBEventProtocols.swift in Sources */,
+				1B7702D91C98A25A0098435C /* DBEventDispatcherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1B7702DB1C98A25A0098435C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B7702DC1C98A25A0098435C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B7702E11C98A25A0098435C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DBEventDispatcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitbrains.DBEventDispatcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DBEventDispatcher.app/DBEventDispatcher";
+			};
+			name = Debug;
+		};
+		1B7702E21C98A25A0098435C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DBEventDispatcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitbrains.DBEventDispatcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DBEventDispatcher.app/DBEventDispatcher";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B7702BB1C98A25A0098435C /* Build configuration list for PBXProject "DBEventDispatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7702DB1C98A25A0098435C /* Debug */,
+				1B7702DC1C98A25A0098435C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B7702E01C98A25A0098435C /* Build configuration list for PBXNativeTarget "DBEventDispatcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B7702E11C98A25A0098435C /* Debug */,
+				1B7702E21C98A25A0098435C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B7702B81C98A25A0098435C /* Project object */;
+}
