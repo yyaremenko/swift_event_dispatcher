@@ -12,18 +12,18 @@ public protocol DBIdentifiableProtocol: class {
     func getHashValue() -> Int
 }
 
-public protocol DBStringRawValue {
-    var rawValue: String { get }
+public protocol DBHasStringVal {
+    var stringVal: String { get }
 }
 
 public protocol DBEventProtocol {
-    var eventName: DBStringRawValue { get }
+    var eventName: DBHasStringVal { get }
     var propagate: Bool { get set }
 }
 
 public protocol DBEventDrivenProtocol: DBIdentifiableProtocol {
-    func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int, handle: DBEventHandle)
-    func subscribeToEvent(eventName: DBStringRawValue, weight: Int, handle: DBEventHandle)
+    func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBHasStringVal, weight: Int, handle: DBEventHandle)
+    func subscribeToEvent(eventName: DBHasStringVal, weight: Int, handle: DBEventHandle)
     
     func dispatchEvent(event: DBEventProtocol)
     
@@ -39,11 +39,11 @@ extension DBIdentifiableProtocol {
 // these methods are mostly wrappers, needed
 // to prevent direct call of DBEventDispatcher static methods
 extension DBEventDrivenProtocol {
-    public func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
+    public func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBHasStringVal, weight: Int = 0, handle: DBEventHandle) {
         DBEventDispatcher.subscribe(anotherSubscriber, toEventName: eventName, weight: weight, handle: handle)
     }
     
-    public func subscribeToEvent(eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
+    public func subscribeToEvent(eventName: DBHasStringVal, weight: Int = 0, handle: DBEventHandle) {
         DBEventDispatcher.subscribe(self, toEventName: eventName, weight: weight, handle: handle)
     }
     

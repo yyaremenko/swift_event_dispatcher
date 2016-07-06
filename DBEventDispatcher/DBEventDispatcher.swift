@@ -14,7 +14,7 @@ struct DBEventDispatcher {
     }
     
     static func dispatch(event: DBEventProtocol) {
-        let eventNameRaw = event.eventName.rawValue
+        let eventNameRaw = event.eventName.stringVal
         
         guard let subscriptions = subscribers[eventNameRaw] else {
             return
@@ -34,8 +34,8 @@ struct DBEventDispatcher {
         }
     }
     
-    static func subscribe(subscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
-        let eventNameRaw = eventName.rawValue
+    static func subscribe(subscriber: DBEventDrivenProtocol, toEventName eventName: DBHasStringVal, weight: Int = 0, handle: DBEventHandle) {
+        let eventNameRaw = eventName.stringVal
         if subscribers[eventNameRaw] == nil {
             subscribers[eventNameRaw] = []
         }
