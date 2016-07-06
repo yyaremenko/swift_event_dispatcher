@@ -10,39 +10,31 @@ import XCTest
 
 class DBEventDispatcherTests: XCTestCase {
     
-    struct MyCustomData {
-        var a: String
-        var b: String
-    }
-    
-    enum EventType {
-        enum CustomData: String {
+    enum EventNames {
+        enum CustomData: String, DBStringRawValue {
             case customDataCreated
             case customDataChanged
         }
     }
     
-    enum EventParcel: DBEventParcelProtocol {
-        case CustomDataEventParcel(EventType.CustomData, CustomDataEvent)
+    class CustomDataEvent: DBEventProtocol {
+        let eventName: DBStringRawValue
+        var propagate = true
         
-        func unpack() -> (String, DBEventProtocol) {
-            switch self {
-            case .CustomDataEventParcel(let eventType, let event):
-                return (eventType.rawValue, event)
-            }
+        var data: MyCustomData
+        
+        init(data: MyCustomData, eventName: EventNames.CustomData) {
+            self.data = data
+            self.eventName = eventName
         }
     }
     
-    class CustomDataEvent: DBEventProtocol {
-        var propagate = true
-        var data: MyCustomData
-        
-        init(data: MyCustomData) {
-            self.data = data
-        }
+    struct MyCustomData {
+        var a: String
+        var b: String
     }
 
-    let eventType = EventType.CustomData.customDataChanged
+    let eventName = EventNames.CustomData.customDataChanged
     
     class EventSubscriber: DBEventDrivenProtocol {
         var handle: DBEventHandle?
@@ -93,7 +85,7 @@ class DBEventDispatcherTests: XCTestCase {
         doSubscribe(subscriberA, 100)
         doSubscribe(subscriberB, 200)
         
-        XCTAssertEqual(DBEventDispatcher.subscribers[eventType.rawValue]!.count, 2, "Invalid number of subscribers")
+        XCTAssertEqual(DBEventDispatcher.subscribers[eventName.rawValue]!.count, 2, "Invalid number of subscribers")
         
         DBEventDispatcher.clearAll()
         
@@ -112,7 +104,7 @@ class DBEventDispatcherTests: XCTestCase {
             
             doDispatch()
             
-            XCTAssertEqual(DBEventDispatcher.subscribers[eventType.rawValue]!.count, 2, "Number of expected subscribers for this event does not match")
+            XCTAssertEqual(DBEventDispatcher.subscribers[eventName.rawValue]!.count, 2, "Number of expected subscribers for this event does not match")
             
             // test that target methods were called
             XCTAssertNotNil(subscriberA.handleCallTime, "No expected handler was called for subscriber A")
@@ -180,22 +172,22 @@ class DBEventDispatcherTests: XCTestCase {
         doSubscribe(subscriberC!, -1)
         
         // make sure subscriptions are properly written
-        XCTAssertEqual(DBEventDispatcher.subscribers[eventType.rawValue]!.count, 3, "Invalid number of subscribers")
+        XCTAssertEqual(DBEventDispatcher.subscribers[eventName.rawValue]!.count, 3, "Invalid number of subscribers")
         
         subscriberA = nil
         subscriberB = nil
         
         doDispatch()
         
-        XCTAssertEqual(DBEventDispatcher.subscribers[eventType.rawValue]!.count, 1, "Invalid number of subscribers")
+        XCTAssertEqual(DBEventDispatcher.subscribers[eventName.rawValue]!.count, 1, "Invalid number of subscribers")
         XCTAssertNotNil(subscriberC?.handleCallTime, "Proper subscriber was not called")
     }
     
     private func doSubscribe(subscriber: EventSubscriber, _ weight: Int) {
-        DBEventDispatcher.subscribe(subscriber, toEventName: eventType.rawValue, weight: weight, handle: subscriber.handle!)
+        DBEventDispatcher.subscribe(subscriber, toEventName: eventName, weight: weight, handle: subscriber.handle!)
     }
     
     private func doDispatch() {
-        DBEventDispatcher.dispatch(EventParcel.CustomDataEventParcel(eventType, CustomDataEvent(data: MyCustomData(a: "aaa", b: "bbb"))))
+        DBEventDispatcher.dispatch(CustomDataEvent(data: MyCustomData(a: "aaa", b: "bbb"), eventName: eventName))
     }
 }
