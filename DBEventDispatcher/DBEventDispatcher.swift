@@ -13,17 +13,17 @@ struct DBEventDispatcher {
         subscribers.removeAll()
     }
     
-    static func dispatch(parcel: DBEventParcelProtocol) {
-        let (eventName, event) = parcel.unpack()
+    static func dispatch(event: DBEventProtocol) {
+        let eventNameRaw = event.eventName.rawValue
         
-        guard let subscriptions = subscribers[eventName] else {
+        guard let subscriptions = subscribers[eventNameRaw] else {
             return
         }
         
         for subscription in subscriptions.sort() {
             // remove subscription if referenced object does not exist anymore
             guard let _ = subscription.subscriber else {
-                subscribers[eventName]!.remove(subscription)
+                subscribers[eventNameRaw]!.remove(subscription)
                 continue
             }
             
@@ -34,25 +34,26 @@ struct DBEventDispatcher {
         }
     }
     
-    static func subscribe(subscriber: DBEventDrivenProtocol, toEventName eventName: String, weight: Int = 0, handle: DBEventHandle) {
-        if subscribers[eventName] == nil {
-            subscribers[eventName] = []
+    static func subscribe(subscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
+        let eventNameRaw = eventName.rawValue
+        if subscribers[eventNameRaw] == nil {
+            subscribers[eventNameRaw] = []
         }
-
-        subscribers[eventName]!.insert(DBEventSubscription(subscriber: subscriber, weight: weight, handle: handle))
+        
+        subscribers[eventNameRaw]!.insert(DBEventSubscription(subscriber: subscriber, weight: weight, handle: handle))
     }
     
     static func unsubscirbe(subscriber: DBEventDrivenProtocol) {
-        for (eventName, subscriptions) in subscribers {
+        for (eventNameRaw, subscriptions) in subscribers {
             for subscription in subscriptions {
                 
                 guard let existingSubscriber = subscription.subscriber else {
-                    subscribers[eventName]!.remove(subscription)
+                    subscribers[eventNameRaw]!.remove(subscription)
                     continue
                 }
                 
                 if existingSubscriber.getHashValue() == subscriber.getHashValue() {
-                    subscribers[eventName]!.remove(subscription)
+                    subscribers[eventNameRaw]!.remove(subscription)
                 }
             }
         }

@@ -33,16 +33,16 @@ public func ==(lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
 
 extension DBEventSubscription: Comparable {}
 
-public func <(lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
+public func < (lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
     return lhs.weight < rhs.weight
 }
-public func <=(lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
+public func <= (lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
     return lhs.weight <= rhs.weight
 }
-public func >=(lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
+public func >= (lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
     return lhs.weight >= rhs.weight
 }
-public func >(lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
+public func > (lhs: DBEventSubscription, rhs: DBEventSubscription) -> Bool {
     return lhs.weight > rhs.weight
 }
 

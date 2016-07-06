@@ -12,23 +12,26 @@ public protocol DBIdentifiableProtocol: class {
     func getHashValue() -> Int
 }
 
+public protocol DBStringRawValue {
+    var rawValue: String { get }
+}
+
 public protocol DBEventProtocol {
+    var eventName: DBStringRawValue { get }
     var propagate: Bool { get set }
 }
 
-public protocol DBEventParcelProtocol {
-    func unpack() -> (String, DBEventProtocol)
-}
-
 public protocol DBEventDrivenProtocol: DBIdentifiableProtocol {
-    func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName: String, weight: Int, handle: DBEventHandle)
-    func subscribeToEvent(eventName: String, weight: Int, handle: DBEventHandle)
-    func dispatchEventParcel(parcel: DBEventParcelProtocol)
+    func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int, handle: DBEventHandle)
+    func subscribeToEvent(eventName: DBStringRawValue, weight: Int, handle: DBEventHandle)
+    
+    func dispatchEvent(event: DBEventProtocol)
+    
     func unsubscribeFromAll()
 }
 
 extension DBIdentifiableProtocol {
-    func getHashValue() -> Int {
+    public func getHashValue() -> Int {
         return ObjectIdentifier(self).hashValue
     }
 }
@@ -36,19 +39,19 @@ extension DBIdentifiableProtocol {
 // these methods are mostly wrappers, needed
 // to prevent direct call of DBEventDispatcher static methods
 extension DBEventDrivenProtocol {
-    func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName: String, weight: Int = 0, handle: DBEventHandle) {
-        DBEventDispatcher.subscribe(anotherSubscriber, toEventName: toEventName, weight: weight, handle: handle)
+    public func subscribeAnotherToEvent(anotherSubscriber: DBEventDrivenProtocol, toEventName eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
+        DBEventDispatcher.subscribe(anotherSubscriber, toEventName: eventName, weight: weight, handle: handle)
     }
     
-    func subscribeToEvent(eventName: String, weight: Int = 0, handle: DBEventHandle) {
+    public func subscribeToEvent(eventName: DBStringRawValue, weight: Int = 0, handle: DBEventHandle) {
         DBEventDispatcher.subscribe(self, toEventName: eventName, weight: weight, handle: handle)
     }
     
-    func dispatchEventParcel(parcel: DBEventParcelProtocol) {
-        DBEventDispatcher.dispatch(parcel)
+    public func dispatchEvent(event: DBEventProtocol) {
+        DBEventDispatcher.dispatch(event)
     }
     
-    func unsubscribeFromAll() {
+    public func unsubscribeFromAll() {
         DBEventDispatcher.unsubscirbe(self)
     }
 }
