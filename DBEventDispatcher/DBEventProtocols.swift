@@ -27,6 +27,7 @@ public protocol DBEventDrivenProtocol: DBIdentifiableProtocol {
     
     func dispatchEvent(event: DBEventProtocol)
     
+    func unsubsribeFromEvent(eventName: DBHasStringVal)
     func unsubscribeFromAll()
 }
 
@@ -49,6 +50,10 @@ extension DBEventDrivenProtocol {
     
     public func dispatchEvent(event: DBEventProtocol) {
         DBEventDispatcher.dispatch(event)
+    }
+    
+    public func unsubsribeFromEvent(eventName: DBHasStringVal) {
+        DBEventDispatcher.unsubscirbe(self, fromEvent: eventName)
     }
     
     public func unsubscribeFromAll() {
